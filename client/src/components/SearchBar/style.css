@@ -1,0 +1,16 @@
+.search-bar {
+  width: 100%;
+  max-width: 400px; /* Adjust the max-width as needed */
+  margin: 0 auto;  /* Center the search bar horizontally if a max-width is set */
+}
+
+.search-bar input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}

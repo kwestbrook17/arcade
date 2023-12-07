@@ -1,0 +1,40 @@
+.carousel-container {
+  width: 80%;
+  margin: 0 auto;
+  max-height: 400px;
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the images inside each slide */
+.slick-slide img {
+  width: 100%; /* Make sure images fill the slide container */
+  border-radius: 8px; /* Add border-radius for rounded corners */
+}
+
+.slick-dots {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-top: 16px; /* Adjust as needed */
+}
+
+.slick-dots li {
+  margin: 0 4px;
+}
+
+.slick-dots button {
+  font-size: 12px; /* Adjust as needed */
+  color: #333; /* Adjust the color of the dots */
+  opacity: 0.6; /* Set the initial opacity */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.slick-dots button.slick-active {
+  opacity: 1; /* Set the active dot opacity */
+}
