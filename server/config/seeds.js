@@ -23,7 +23,7 @@ db.once("open", async () => {
       title: "Space Invaders",
       description: "Classic space Invaders",
       thumbnail: "cover.png",
-      fileURL: "https://dwmkerr.github.io/spaceinvaders/",
+      fileURL: "/games/spaceInvaders/index.html",
     },
   ]);
 
