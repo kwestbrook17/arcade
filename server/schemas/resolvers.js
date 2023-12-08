@@ -1,4 +1,4 @@
-const { User, Product, Category, Order, Reviews } = require("../models");
+const { User, Product, Category, Order, Reviews, Game } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
@@ -38,6 +38,9 @@ const resolvers = {
       }
 
       throw AuthenticationError;
+    },
+    getGames: async () => {
+      return await Game.find({});
     },
     review: async () => {
       return await Reviews.find();

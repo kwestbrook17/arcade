@@ -5,10 +5,15 @@ import logo from "../../../public/images/GameGoText.png";
 import cartIcon from "../../assets/icons/cartIcon.png";
 import login from "../../assets/icons/login.png";
 import logout from "../../assets/icons/logoutIcon.png";
+import SearchBar from "../SearchBar";
+import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 
 function Nav() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [state] = useStoreContext();
   const { cart } = state;
+  const location = useLocation();
 
   // Calculate total items in the cart
   const totalItems = cart.reduce(
@@ -16,10 +21,15 @@ function Nav() {
     0
   );
 
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    // You can add additional logic here if needed
+  };
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
+        <ul className="flex-row" style={{ marginRight: "2rem" }}>
           <li
             className="mx-1"
             style={{ display: "flex", alignItems: "center" }}
@@ -27,7 +37,6 @@ function Nav() {
             <Link to="/orderHistory">Order History</Link>
           </li>
           <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a
               href="/"
               onClick={() => Auth.logout()}
@@ -102,73 +111,96 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Link
-                to="/login"
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <ul className="flex-row" style={{ marginRight: "20px" }}>
+            <li className="mx-1">
+              <div
                 style={{
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  textAlign: "center",
                 }}
               >
-                <img
-                  src={login}
-                  style={{ width: "30px", height: "auto" }}
-                ></img>
-                <div
+                <Link
+                  to="/login"
                   style={{
-                    fontSize: "14px",
-                    lineHeight: "1",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
                   }}
                 >
-                  Login
-                </div>
-              </Link>
-            </div>
-          </li>
-        </ul>
+                  <img
+                    src={login}
+                    style={{ width: "30px", height: "auto" }}
+                  ></img>
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      lineHeight: "1",
+                    }}
+                  >
+                    Login
+                  </div>
+                </Link>
+              </div>
+            </li>
+          </ul>
+        </div>
       );
     }
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Link
-          to="/"
+    <header
+      className="flex-row px-1"
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <div className="header-flex">
+        <h1
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            marginLeft: "2rem",
           }}
         >
-          {" "}
-          <img
-            src={logo}
-            alt="GameGo Logo"
-            style={{ width: "150px", height: "auto" }}
-          ></img>
-        </Link>
-      </h1>
+          <Link
+            to="/"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src={logo}
+              alt="GameGo Logo"
+              style={{ width: "150px", height: "auto" }}
+            ></img>
+          </Link>
+        </h1>
 
-      <nav>{showNavigation()}</nav>
+        {location.pathname !== "/login" && location.pathname !== "/signup" && (
+          <div className="search-bar-container">
+            <SearchBar onSearch={handleSearch} />
+          </div>
+        )}
+
+        <nav>{showNavigation()}</nav>
+      </div>
     </header>
   );
 }
