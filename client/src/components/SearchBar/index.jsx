@@ -34,7 +34,10 @@ const SearchBar = ({ products, onSearch }) => {
       {suggestions.length > 0 && (
         <ul className="suggestions">
           {suggestions.map((suggestion) => (
-            <li key={suggestion.id} onClick={() => handleSuggestionClick(suggestion.name)}>
+            <li
+              key={suggestion.id}
+              onClick={() => handleSuggestionClick(suggestion.name)}
+            >
               {suggestion.name}
             </li>
           ))}

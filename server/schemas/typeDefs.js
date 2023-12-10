@@ -58,6 +58,14 @@ const typeDefs = `
     product_id: ID!
   }
 
+  type Game {
+    _id: ID
+    title: String
+    description: String
+    thumbnail: String
+    fileURL: String
+  }
+
   type Query {
     categories: [Category]
     products(category: ID, name: String): [Product]
@@ -66,6 +74,7 @@ const typeDefs = `
     order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
     review:[Review]
+    getGames: [Game]
   }
 
   type Mutation {

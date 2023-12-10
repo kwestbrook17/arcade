@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import GameList from "../components/GameList";
 import ProductList from "../components/ProductList";
 import CategoryMenu from "../components/CategoryMenu";
 import Carousel from "../components/Carousel";
-import SearchBar from "../components/SearchBar";
 import CustomPrevArrow from "../components/CustomPrevArrow";
 import CustomNextArrow from "../components/CustomNextArrow";
 import carouselPhoto1 from "../assets/counterStrikeBanner.png";
@@ -10,7 +10,6 @@ import carouselPhoto2 from "../assets/pokemonBanner.jpg";
 import carouselPhoto3 from "../assets/gamegoBanner.png";
 
 const Home = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const carouselPhotos = [carouselPhoto1, carouselPhoto2, carouselPhoto3];
 
   const productLinks = [
@@ -18,11 +17,6 @@ const Home = () => {
     "https://example.com/product2",
     "https://example.com/product3",
   ];
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    // You can add additional logic here if needed
-  };
 
   const settings = {
     dots: true,
@@ -37,8 +31,7 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
-      <SearchBar onSearch={handleSearch} />
+    <div className="container" style={{ minHeight: "100vh" }}>
       <h1
         style={{
           textAlign: "center",
@@ -55,6 +48,7 @@ const Home = () => {
       />
       <CategoryMenu />
       <ProductList />
+      <GameList />
     </div>
   );
 };

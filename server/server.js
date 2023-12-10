@@ -27,6 +27,8 @@ const startApolloServer = async () => {
     express.static(path.join(__dirname, "../client/public/images"))
   );
 
+  app.use("/games", express.static(path.join(__dirname, "../client/games")));
+
   app.use(
     "/graphql",
     expressMiddleware(server, {

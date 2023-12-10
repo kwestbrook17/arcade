@@ -1,6 +1,6 @@
 :root {
   --primary: #010012;
-  --secondary: #e4029e;
+  --secondary: #ff8cdb;
   --tertiary: #b12704;
   --light: #fafafa;
   --dark: #272f32;
@@ -160,8 +160,8 @@ input:focus {
 }
 
 .mx-1 {
-  margin-right: var(--spacing-one);
-  margin-left: var(--spacing-one);
+  margin-right: var(--spacing-two);
+  margin-left: var(--spacing-two);
 }
 
 .mx-2 {
@@ -248,6 +248,26 @@ input:focus {
   height: 300px;
 }
 
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.search-bar-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.iframeContainerStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 @font-face {
   font-family: "Anton";
   src: url("./assets/fonts/Anton-Regular.ttf") format("truetype");
@@ -271,5 +291,12 @@ input:focus {
   }
   .order-summary {
     margin: 2rem;
+  }
+  .header-flex {
+    flex-direction: column;
+  }
+
+  .search-bar-container {
+    order: +1; /* This will move the search bar to the top */
   }
 }

@@ -1,11 +1,12 @@
 const db = require("./connection");
-const { User, Product, Category } = require("../models");
+const { User, Product, Category, Game } = require("../models");
 const cleanDB = require("./cleanDB");
 
 db.once("open", async () => {
   await cleanDB("Category", "categories");
   await cleanDB("Product", "products");
   await cleanDB("User", "users");
+  await cleanDB("Game", "games");
 
   const categories = await Category.insertMany([
     { name: "Genesis" },
@@ -16,6 +17,17 @@ db.once("open", async () => {
   ]);
 
   console.log("categories seeded");
+
+  const games = await Game.insertMany([
+    {
+      title: "Space Invaders",
+      description: "Classic space Invaders",
+      thumbnail: "cover.png",
+      fileURL: "/games/spaceInvaders/index.html",
+    },
+  ]);
+
+  console.log("games seeded");
 
   const products = await Product.insertMany([
     {

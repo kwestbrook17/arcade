@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import OrderHistory from "./pages/OrderHistory";
 import Success from "./pages/Success";
 import FullPageCart from "./pages/Cart.jsx";
+import GameDetails from "./pages/GameDetails";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
         path: "/orderHistory",
         element: <OrderHistory />,
       },
+      {
+        path: "/games/:id",
+        element: <GameDetails />,
+      },
+
       {
         path: "/products/:id",
         element: <Detail />,

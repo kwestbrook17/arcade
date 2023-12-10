@@ -1,5 +1,17 @@
 import { gql } from "@apollo/client";
 
+export const QUERY_GAMES = gql`
+  query GetGames {
+    getGames {
+      _id
+      title
+      description
+      thumbnail
+      fileURL
+    }
+  }
+`;
+
 export const QUERY_REVIEWS = gql`
   query getReviews($content: String!, $user_id: ID!) {
     reviews(content: $content, user_id: $user_id) {
